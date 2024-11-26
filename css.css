@@ -1,0 +1,177 @@
+body{
+    margin: 0px;
+    font-size: 10px;
+}
+#header{
+    background-color: rgb(255, 0, 0);
+    height: 60px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+#header div{
+    margin: 10px;
+    
+}
+#header_space_1{
+    flex-grow: 4.1;
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+}
+#header_space_2{
+    background-color: rgb(255, 0, 0);
+    flex-grow: 5.5;
+    color: rgb(255, 0, 0);
+}
+#header_menu{
+    flex-grow: 0.4;
+    background-color: black;
+    border-radius: 50px;
+
+    
+}
+#header_logo{
+    flex-grow: 2;
+    background-color: rgb(179, 177, 177);
+}
+#header_account{
+    flex-grow: 1;
+    background-color: rgb(106, 106, 106);
+    flex-direction: row;
+    border-radius: 50px;
+}
+#header_search{
+    flex-grow: 7;
+    background-color: rgb(68, 68, 68);
+    border-radius: 50px;
+    
+    
+}
+#movie_space{
+    background-color: rgb(59, 44, 72);
+    display: flex;
+    
+    height: 800px;
+    
+}
+#movie_space div{
+    margin: 10px;
+    
+    display: flex;
+    flex-direction: column;
+}
+#movie_text{
+    order: 2;
+    flex-grow: 8;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(68, 68, 68);
+}
+#movie_text div{
+    margin: 10px;
+}
+#movie{
+    background-color: aliceblue;
+    
+    flex-grow: 19;
+}
+#text{
+    flex-grow: 1;
+    
+    background-color: aqua;
+}
+
+#playlist{
+    order: 1;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(0, 255, 68);
+
+}
+
+#playlist div{
+    margin: 10px;
+}
+#playlist_name{
+    flex-grow: 1;
+    background-color: aqua;
+}
+#playlist_moves{
+    flex-grow: 19;
+    background-color: rgb(30, 115, 190);
+
+}
+#account_under_move{
+    margin: 0px;
+    height: 60px;
+    display: flex;
+    
+    background-color: rgb(255, 0, 0);
+}
+#account_under_move div{
+    margin: 5px;
+}
+#account{
+    background-color: rgb(106, 106, 106);
+    flex-grow: 0.6;
+    order: 8;
+    border-radius: 50px;
+}
+#header_space_3{
+    background-color: rgb(11, 11, 11);
+    flex-grow: 29.4;
+    order: 7;
+}
+#button_downloud{
+    background-color: aqua;
+    flex-grow: 0.5;
+    order: 6;
+}
+#header_space_4{
+    background-color: rgb(11, 11, 11);
+    flex-grow: 1;
+    order: 5;
+}
+#button_like{
+    background-color: rgb(255, 255, 255);
+    flex-grow: 0.5;
+    order: 4;
+}
+#header_space_5{
+    background-color: rgb(11, 11, 11);
+    flex-grow: 1;
+    order: 3;
+}
+#button_subscribe{
+    background-color: aqua;
+    flex-grow: 3;
+    order: 2;
+}
+#header_space_6{
+    background-color: rgb(11, 11, 11);
+    flex-grow: 11.2;
+    order: 1;
+}
+
+#comment{
+    background-color: blue;
+}
+#submit_comment{
+    background-color: aliceblue;
+}
+#account_comment{
+    background-color: aqua;
+}
+#text_comment{
+    background-color: aliceblue;
+}
+#comment_submite{
+    background-color: aqua;
+}
+#all_comment{
+    background-color: rgb(243, 243, 243);
+}
+
+#copy_write{
+    background-color: blueviolet;
+}
