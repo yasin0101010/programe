@@ -1,6 +1,7 @@
 body{
     margin: 0px;
     font-size: 10px;
+    
 }
 #header{
     background-color: rgb(255, 0, 0);
@@ -61,23 +62,41 @@ body{
 }
 #movie_text{
     order: 2;
-    flex-grow: 8;
+    flex-grow: 0;
     display: flex;
     flex-direction: column;
     background-color: rgb(68, 68, 68);
+    width: 1460px;
+    direction: rtl;
 }
 #movie_text div{
     margin: 10px;
+    
 }
 #movie{
     background-color: aliceblue;
-    
+    overflow: hidden;
     flex-grow: 19;
+    width: 1450px;
+    direction: rtl;
 }
+#movie video{
+    width: 1450px;
+    height: auto;
+    max-width: 100%;
+    
+}
+
 #text{
     flex-grow: 1;
+    background-color: #343a40;
+    color: white;
+    height: 60px;
+    width: 1450px;
     
-    background-color: aqua;
+    font-size: 20px;
+    direction: rtl;
+    
 }
 
 #playlist{
@@ -118,60 +137,192 @@ body{
     border-radius: 50px;
 }
 #header_space_3{
-    background-color: rgb(11, 11, 11);
-    flex-grow: 29.4;
+    
+    flex-grow: 33.5;
     order: 7;
 }
 #button_downloud{
-    background-color: aqua;
     flex-grow: 0.5;
     order: 6;
 }
-#header_space_4{
-    background-color: rgb(11, 11, 11);
-    flex-grow: 1;
-    order: 5;
-}
-#button_like{
-    background-color: rgb(255, 255, 255);
-    flex-grow: 0.5;
-    order: 4;
-}
-#header_space_5{
-    background-color: rgb(11, 11, 11);
-    flex-grow: 1;
-    order: 3;
-}
 #button_subscribe{
-    background-color: aqua;
-    flex-grow: 3;
+    flex-grow: 0;
     order: 2;
 }
 #header_space_6{
-    background-color: rgb(11, 11, 11);
-    flex-grow: 11.2;
+    
+    flex-grow: 13.5;
     order: 1;
 }
 
 #comment{
     background-color: blue;
+    display: flex;
+    flex-direction: column;
+    margin-left: 425px;
+    
+}
+#comment div{
+    margin: 10px;
 }
 #submit_comment{
     background-color: aliceblue;
+    display: flex;
+    flex-direction: row-reverse;
+
 }
+
 #account_comment{
     background-color: aqua;
+    flex-grow: 2;
+    order: 1;
+    border-radius: 50px;
 }
 #text_comment{
-    background-color: aliceblue;
+    background-color: rgb(20, 58, 92);
+    flex-grow: 44;
+    order: 2;
+    border-radius: 50px;
 }
 #comment_submite{
     background-color: aqua;
+    flex-grow: 8;
+    order: 3;
+    border-radius: 50px;
 }
 #all_comment{
     background-color: rgb(243, 243, 243);
+    height: 2000px;
+    
 }
 
 #copy_write{
-    background-color: blueviolet;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 40px;
+}
+
+#button-like {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #000000;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    flex-grow: 1;
+    order: 4;
+}
+
+#button-like:hover {
+    background-color: #414040;
+}
+
+#button-like:active {
+    transform: scale(0.95);
+}
+
+#like-icon {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#button-like.liked .like-icon {
+    color: #ff0000;
+    transform: scale(1.3);
+}
+
+  /* انیمیشن قلب کوچک */
+#button-like.liked .burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 77, 77, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: burst 0.5s ease-out forwards;
+}
+
+@keyframes burst {
+    0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+    }
+    100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+    }
+}
+#download-button {
+    font-size: 16px;
+    color: #2d21d6;
+    position: relative;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+#subscribe-button{
+    font-size: 16px;
+    color: #9e9c30;
+    position: relative;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+#download-button:hover {
+    background-color: #414040;
+}
+#subscribe-button:hover{
+    background-color: #414040;
+}
+#download-button:active, #subscribe-button:active {
+    transform: scale(0.95);
+}
+
+/* افکت انفجار */
+#download-button .burst, #subscribe-button .burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background: rgba(76, 175, 80, 0.3); /* رنگ انفجار */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: burst-download 0.5s ease-out forwards;
+}
+
+@keyframes burst-download {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
 }

@@ -29,24 +29,26 @@
         </div>
 
     </div>
-    <div id="movie_space" , class="flex-container">
+    <div id="movie_space">
         <!-- قسمت ویدیو و پلی لیست -->
 
         <div id="movie_text">
             <!--  خود ویدیو و متن زیر ان-->
             
-              <div id="movie">
+            <div id="movie">
                 <!-- ویدیو -->
-                <p>
-                    salam
-                </p>
-              </div>
-              <div id="text">
+                <video controls>
+                    <source src="44b16fd6315b21cd71ae55ec2932b93849082152-1080p.mp4" type="video/mp4">
+                </video>
+                
+            </div>
+            <div id="text">
                 <!-- اسم یا عنوان ویدیو -->
-                <p>
-                    salam
+                 
+                 <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp; فیلم هندی جذاب
                 </p>
-              </div>
+            </div>
         </div>
         <div id="playlist">
             <!-- قسمت پلی لیست سایت -->
@@ -65,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div id="account_under_move" , class="flex-container">
+    <div id="account_under_move" >
         <!-- قسمت زیر ویدیو  -->
         <p>
             
@@ -77,38 +79,85 @@
             </p>
         </div>
         <div id="header_space_3"> 6</div>
+        
         <div id="button_downloud">
             <!-- دکمه دانلود ویدیو -->
-            <p>
-                down
-            </p>
+            <button id="download-button" onclick="downloadVideo()">⬇️ download</button>
         </div>
-        <div id="header_space_4"> 6</div>
-        <div id="button_like">
-            <!-- دکمه لایک ویدیو  -->
-            <p>
-                like
-            </p>
+        
+        
+        
+            
+        <div id="button-like" onclick="toggleLike(this)">
+            <span id="like-icon">❤️like</span>
         </div>
-        <div id="header_space_5"> 6</div>
+        
+        
+        
         <div id="button_subscribe">
             <!-- دکمه دنبال کردن -->
-            <p>
-                sub
-            </p>
+            <button id="subscribe-button" onclick="subscribeChannel()">🔔 subscribe</button>
+            
         </div>
+        <script>
+            // عملکرد دکمه دانلود
+            function downloadVideo() {
+                const button = document.getElementById('download-button');
+                const burst = document.createElement('div');
+                burst.className = 'burst';
+                button.appendChild(burst);
+            
+                // حذف افکت انفجار پس از اتمام انیمیشن
+                setTimeout(() => burst.remove(), 500);
+            
+                // عملکرد دانلود ویدیو
+                const videoUrl = '44b16fd6315b21cd71ae55ec2932b93849082152-1080p.mp4'; // مسیر ویدیو
+                const a = document.createElement('a');
+                a.href = videoUrl;
+                a.download = "44b16fd6315b21cd71ae55ec2932b93849082152-1080p.mp4";
+                a.click();
+            }
+            
+            // عملکرد دکمه دنبال کردن
+            function subscribeChannel() {
+                const button = document.getElementById('subscribe-button');
+                const burst = document.createElement('div');
+                burst.className = 'burst';
+                button.appendChild(burst);
+            
+                // حذف افکت انفجار پس از اتمام انیمیشن
+                setTimeout(() => burst.remove(), 500);
+            
+                // پیام دنبال کردن
+                
+            }
+            
+            
+            function toggleLike(button) {
+                button.classList.toggle('liked');
+                if (button.classList.contains('liked')) {
+                    const burst = document.createElement('div');
+                    burst.className = 'burst';
+                    button.appendChild(burst);
+            
+                    // حذف افکت انفجار پس از اتمام انیمیشن
+                    setTimeout(() => burst.remove(), 500);
+                    
+                }
+            }
+            
+            
+              </script>
+        
+        
         <div id="header_space_6"> 6</div>
     </div> 
     <div id="comment">
         <!-- این قسمت اصلا برای کامنت ها است -->
-        <p>
-            salam
-        </p>
+        
         <div id="submit_comment">
             <!-- قسمت ثبت کامنت ها -->
-            <p>
-                salam
-            </p>
+            
             <div id="account_comment">
                 <!-- پروفایل طرف -->
                 <p>
@@ -137,9 +186,7 @@
     </div>
     <div id="copy_write">
         <!-- کپی رایت  -->
-        <p>
-            salam
-        </p>
+        <p>© 2024 تمامی حقوق محفوظ است.</p>
     </div>
 </body>
 </html>
