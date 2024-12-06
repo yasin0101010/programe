@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div id="header" , class="flex-container">
+        <!-- قسمت بالایی سایت -->
+        <div id="header_menu">
+            <!-- menu bar -->
+            <a href="#" class="menu-button">
+                ☰
+            </a>
+            
+        </div>
+        <div class="logo-container">
+            <a href="https://example.com" class="logo-link">
+                <img src="logo site.png" alt="Logo" class="logo">
+            </a>
+        </div>            
+        <div id="header_space_1"> 5</div>
+        <div id="header_search">
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search here..." required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div id="header_space_2"> </div>
+        <div class="profile-container">
+            <a id="profile-link" href="#">
+                <img id="profile-image" src="default-user.jpg" alt="Profile Image">
+            </a>
+        </div>
+        <script>
+            window.onload = function() {
+                // فرض کنید چک می‌کنیم که آیا کاربر وارد شده است یا خیر
+                const userLoggedIn = false; // اگر کاربر وارد شده است، این را به true تغییر دهید
+                const hasProfileImage = false; // اگر کاربر پروفایل دارد، این را به true تغییر دهید
+                
+                const profileImage = document.getElementById("profile-image");
+                const profileLink = document.getElementById("profile-link");
+
+                if (!userLoggedIn) {
+                    // اگر کاربر وارد نشده باشد، به صفحه ثبت‌نام هدایت شود
+                    profileImage.src = "default-user.jpg"; // عکس دیفالت
+                    profileLink.href = "register.html"; // لینک به صفحه ثبت‌نام
+                } else {
+                    // اگر کاربر وارد شده باشد، چک می‌کنیم که آیا پروفایل دارد یا نه
+                    if (hasProfileImage) {
+                        // اگر کاربر پروفایل دارد، عکس پروفایل را نشان می‌دهیم
+                        profileImage.src = "user.jpg"; // این باید مسیر عکس پروفایل کاربر باشد
+                        profileLink.href = "user-profile.html"; // لینک به صفحه کاربر
+                    } else {
+                        // اگر پروفایل نداشته باشد، عکس دیفالت را نمایش می‌دهیم
+                        profileImage.src = "default-user.jpg"; 
+                        profileLink.href = "register.html"; // لینک به صفحه ثبت‌نام
+                    }
+                }
+            }
+
+
+
+        </script>
+    </div>
+    <div id="movie_space">
+        <!-- قسمت ویدیو و پلی لیست -->
+
+        <div id="movie_text">
+            <!--  خود ویدیو و متن زیر ان-->
+            
+            <div id="movie">
+                <!-- ویدیو -->
+                <video controls>
+                    <source src="film 4.mp4" type="video/mp4">
+                </video>
+                
+            </div>
+            <div id="text">
+                <!-- اسم یا عنوان ویدیو -->
+                
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp; Family
+                </p>
+            </div>
+        </div>
+        <div class="playlist-container">
+            <h1>Playlist</h1>
+    
+            <div class="video-item">
+                <a href="film4.html">
+                    <img src="film 4.png" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Family</h2>
+                        <p>Duration: 7:15</p>
+                        
+                    </div>
+                </a>
+            </div>
+    
+            <div class="video-item">
+                <a href="index.html">
+                    <img src="film 1.png" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Humen VS Nuture</h2>
+                        <p>Duration: 3:35</p>
+                        
+                    </div>
+                </a>
+            </div>
+    
+            <div class="video-item">
+                <a href="film2.html">
+                    <img src="film 2.png" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Help people</h2>
+                        <p>Duration: 1:25</p>
+                        
+                    </div>
+                </a>
+            </div>
+    
+            <div class="video-item">
+                <a href="film3.html">
+                    <img src="film 3.jpg" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Futur of Humen</h2>
+                        <p>Duration: 6:24</p>
+                        
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="account_under_move" >
+        <!-- قسمت زیر ویدیو  -->
+        <p>
+            
+        </p>
+        <div class="profile-container-user">
+            <a id="profile-link1" href="#">
+                <img id="profile-image1" src="user.jpg" alt="Profile Image">
+            </a>
+        </div>
+        <div id="header_space_3"> </div>
+        
+        <div id="button_downloud">
+            <!-- دکمه دانلود ویدیو -->
+            <button id="download-button" onclick="downloadVideo()">⬇️ download</button>
+        </div>
+        
+        
+        
+            
+        <div id="button-like" onclick="toggleLike(this)">
+            <span id="like-icon">❤️like</span>
+        </div>
+        
+        
+        
+        <div id="button_subscribe">
+            <!-- دکمه دنبال کردن -->
+            <button id="subscribe-button" onclick="subscribeChannel()">🔔 subscribe</button>
+            
+        </div>
+        <script>
+            // عملکرد دکمه دانلود
+            function downloadVideo() {
+                const button = document.getElementById('download-button');
+                const burst = document.createElement('div');
+                burst.className = 'burst';
+                button.appendChild(burst);
+            
+                // حذف افکت انفجار پس از اتمام انیمیشن
+                setTimeout(() => burst.remove(), 500);
+            
+                // عملکرد دانلود ویدیو
+                const videoUrl = 'film 4.mp4'; // مسیر ویدیو
+                const a = document.createElement('a');
+                a.href = videoUrl;
+                a.download = "film 4.mp4";
+                a.click();
+            }
+            
+            // عملکرد دکمه دنبال کردن
+            function subscribeChannel() {
+                const button = document.getElementById('subscribe-button');
+                const burst = document.createElement('div');
+                burst.className = 'burst';
+                button.appendChild(burst);
+            
+                // حذف افکت انفجار پس از اتمام انیمیشن
+                setTimeout(() => burst.remove(), 500);
+            
+                // پیام دنبال کردن
+                
+            }
+            
+            
+            function toggleLike(button) {
+                button.classList.toggle('liked');
+                if (button.classList.contains('liked')) {
+                    const burst = document.createElement('div');
+                    burst.className = 'burst';
+                    button.appendChild(burst);
+            
+                    // حذف افکت انفجار پس از اتمام انیمیشن
+                    setTimeout(() => burst.remove(), 500);
+                    
+                }
+            }
+            
+            
+        </script>
+        
+        
+        <div id="header_space_6"> </div>
+    </div> 
+    <div id="comment">
+        <!-- این قسمت اصلا برای کامنت ها است -->
+        
+        <div id="submit_comment">
+            <!-- قسمت ثبت کامنت ها -->
+            
+            <div id="account_comment">
+                <!-- پروفایل طرف -->
+                <p>
+                    salam
+                </p>
+            </div>
+            <div id="text_comment">
+                <!-- محل وارد کردن کامنت -->
+                <p>
+                    salam
+                </p>
+            </div>
+            <div id="comment_submite">
+                <!-- دکمه وارد کردن کامنت -->
+                <p>
+                    salam
+                </p>
+            </div>
+        </div>
+        <div id="all_comment">
+            <!-- کامنت ها -->
+            <p>
+                salam
+            </p>
+        </div>
+    </div>
+    <div id="copy_write">
+        <!-- کپی رایت  -->
+        <p>© 2024 تمامی حقوق محفوظ است.</p>
+    </div>
+</body>
+</html>

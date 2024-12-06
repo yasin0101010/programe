@@ -11,23 +11,60 @@
     <div id="header" , class="flex-container">
         <!-- قسمت بالایی سایت -->
         <div id="header_menu">
-            1
-            <!-- قسمت کلید منو -->
+            <!-- menu bar -->
+            <a href="#" class="menu-button">
+                ☰
+            </a>
+            
         </div>
-        <div id="header_logo">
-            2
-            <!-- لوگو یا اسم سایت ویدیو -->
-        </div>
+        <div class="logo-container">
+            <a href="https://example.com" class="logo-link">
+                <img src="logo site.png" alt="Logo" class="logo">
+            </a>
+        </div>            
         <div id="header_space_1"> 5</div>
         <div id="header_search">
-            4<!-- سرچ بار -->
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search here..." required>
+                <button type="submit">Search</button>
+            </form>
         </div>
-        <div id="header_space_2"> 6</div>
-        <div id="header_account">
-            
-            3<!-- اکانت طرف مقابل -->
+        <div id="header_space_2"> </div>
+        <div class="profile-container">
+            <a id="profile-link" href="#">
+                <img id="profile-image" src="default-user.jpg" alt="Profile Image">
+            </a>
         </div>
+        <script>
+            window.onload = function() {
+                // فرض کنید چک می‌کنیم که آیا کاربر وارد شده است یا خیر
+                const userLoggedIn = false; // اگر کاربر وارد شده است، این را به true تغییر دهید
+                const hasProfileImage = false; // اگر کاربر پروفایل دارد، این را به true تغییر دهید
+                
+                const profileImage = document.getElementById("profile-image");
+                const profileLink = document.getElementById("profile-link");
 
+                if (!userLoggedIn) {
+                    // اگر کاربر وارد نشده باشد، به صفحه ثبت‌نام هدایت شود
+                    profileImage.src = "default-user.jpg"; // عکس دیفالت
+                    profileLink.href = "register.html"; // لینک به صفحه ثبت‌نام
+                } else {
+                    // اگر کاربر وارد شده باشد، چک می‌کنیم که آیا پروفایل دارد یا نه
+                    if (hasProfileImage) {
+                        // اگر کاربر پروفایل دارد، عکس پروفایل را نشان می‌دهیم
+                        profileImage.src = "user.jpg"; // این باید مسیر عکس پروفایل کاربر باشد
+                        profileLink.href = "user-profile.html"; // لینک به صفحه کاربر
+                    } else {
+                        // اگر پروفایل نداشته باشد، عکس دیفالت را نمایش می‌دهیم
+                        profileImage.src = "default-user.jpg"; 
+                        profileLink.href = "register.html"; // لینک به صفحه ثبت‌نام
+                    }
+                }
+            }
+
+
+
+        </script>
     </div>
     <div id="movie_space">
         <!-- قسمت ویدیو و پلی لیست -->
@@ -38,32 +75,63 @@
             <div id="movie">
                 <!-- ویدیو -->
                 <video controls>
-                    <source src="44b16fd6315b21cd71ae55ec2932b93849082152-1080p.mp4" type="video/mp4">
+                    <source src="film 1.mp4" type="video/mp4">
                 </video>
                 
             </div>
             <div id="text">
                 <!-- اسم یا عنوان ویدیو -->
-                 
-                 <p>
-                    &nbsp;&nbsp;&nbsp;&nbsp; فیلم هندی جذاب
+                
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp; Humen VS Nuture
                 </p>
             </div>
         </div>
-        <div id="playlist">
-            <!-- قسمت پلی لیست سایت -->
-            
-            <div id="playlist_name">
-                <!-- عنوان پلی لیست -->
-                <p>
-                    salam
-                </p>
+        <div class="playlist-container">
+            <h1>Playlist</h1>
+    
+            <div class="video-item">
+                <a href="index.html">
+                    <img src="film 1.png" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Humen VS Nuture</h2>
+                        <p>Duration: 3:35</p>
+                        
+                    </div>
+                </a>
             </div>
-            <div id="playlist_moves">
-                <!-- لیست ویدیو های وارد شده -->
-                <p>
-                    salam
-                </p>
+    
+            <div class="video-item">
+                <a href="film2.html">
+                    <img src="film 2.png" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Help people</h2>
+                        <p>Duration: 1:25</p>
+                        
+                    </div>
+                </a>
+            </div>
+    
+            <div class="video-item">
+                <a href="fime3.html">
+                    <img src="film 3.jpg" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Futur of Humen</h2>
+                        <p>Duration: 6:24</p>
+                        
+                    </div>
+                </a>
+            </div>
+    
+            <div class="video-item">
+                <a href="film4.html">
+                    <img src="film 4.png" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Family</h2>
+                        <p>Duration: 7:15</p>
+                        
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -72,13 +140,12 @@
         <p>
             
         </p>
-        <div id="account">
-            <!-- مشخصات پیج کسی که ویدیو گذاشته -->
-            <p>
-                account
-            </p>
+        <div class="profile-container-user">
+            <a id="profile-link1" href="#">
+                <img id="profile-image1" src="user.jpg" alt="Profile Image">
+            </a>
         </div>
-        <div id="header_space_3"> 6</div>
+        <div id="header_space_3"> </div>
         
         <div id="button_downloud">
             <!-- دکمه دانلود ویدیو -->
@@ -111,10 +178,10 @@
                 setTimeout(() => burst.remove(), 500);
             
                 // عملکرد دانلود ویدیو
-                const videoUrl = '44b16fd6315b21cd71ae55ec2932b93849082152-1080p.mp4'; // مسیر ویدیو
+                const videoUrl = 'film 1.mp4'; // مسیر ویدیو
                 const a = document.createElement('a');
                 a.href = videoUrl;
-                a.download = "44b16fd6315b21cd71ae55ec2932b93849082152-1080p.mp4";
+                a.download = "film 1.mp4";
                 a.click();
             }
             
@@ -147,10 +214,10 @@
             }
             
             
-              </script>
+        </script>
         
         
-        <div id="header_space_6"> 6</div>
+        <div id="header_space_6"> </div>
     </div> 
     <div id="comment">
         <!-- این قسمت اصلا برای کامنت ها است -->
