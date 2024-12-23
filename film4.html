@@ -219,38 +219,64 @@
         
         <div id="header_space_6"> </div>
     </div> 
-    <div id="comment">
-        <!-- این قسمت اصلا برای کامنت ها است -->
-        
-        <div id="submit_comment">
-            <!-- قسمت ثبت کامنت ها -->
-            
-            <div id="account_comment">
-                <!-- پروفایل طرف -->
-                <p>
-                    salam
-                </p>
+    <div class="comment-container">
+        <h2>Comments</h2>
+        <div class="comment-form">
+            <div class="user-avatar">
+                <img src="default-user.jpg" alt="User Avatar">
             </div>
-            <div id="text_comment">
-                <!-- محل وارد کردن کامنت -->
-                <p>
-                    salam
-                </p>
-            </div>
-            <div id="comment_submite">
-                <!-- دکمه وارد کردن کامنت -->
-                <p>
-                    salam
-                </p>
+            <div class="input-group">
+                <textarea id="comment-input" placeholder="Write your comment here..." required></textarea>
+                <button onclick="submitComment()">Submit</button>
             </div>
         </div>
-        <div id="all_comment">
-            <!-- کامنت ها -->
-            <p>
-                salam
-            </p>
+        <div class="comments-list" id="comments-list">
+            <!-- Comments will be dynamically added here -->
         </div>
     </div>
+
+    <script>
+        function submitComment() {
+            const commentInput = document.getElementById('comment-input');
+            const commentsList = document.getElementById('comments-list');
+            const commentText = commentInput.value.trim();
+
+            if (commentText === '') {
+                alert('Comment cannot be empty!');
+                return;
+            }
+
+            // Create a new comment element
+            const commentItem = document.createElement('div');
+            commentItem.className = 'comment-item';
+
+            const avatar = document.createElement('div');
+            avatar.className = 'avatar';
+            avatar.innerHTML = '<img src="default-user.jpg" alt="User Avatar">';
+
+            const content = document.createElement('div');
+            content.className = 'content';
+
+            const author = document.createElement('div');
+            author.className = 'author';
+            author.textContent = 'Anonymous'; // Replace with the user's name if available
+
+            const text = document.createElement('div');
+            text.className = 'text';
+            text.textContent = commentText;
+
+            content.appendChild(author);
+            content.appendChild(text);
+            commentItem.appendChild(avatar);
+            commentItem.appendChild(content);
+
+            // Add the new comment to the list
+            commentsList.appendChild(commentItem);
+
+            // Clear the input field
+            commentInput.value = '';
+        }
+    </script>
     <div id="copy_write">
         <!-- کپی رایت  -->
         <p>© 2024 تمامی حقوق محفوظ است.</p>
