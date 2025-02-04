@@ -5,30 +5,55 @@ if(isset($_GET["gmail"]) && isset($_GET["phone_number"] ) && isset($_GET["passwo
     $c = $_GET["phone_number"];
     $d = $_GET["password"];
     $connect_db = mysqli_connect(hostname:"localhost", username:"root", password:"", database:"account");
-    mysqli_query(mysql:$connect_db,query:"INSERT INTO `user`(`username`, `gmail`, `phone_number`, `password`) VALUES ('$a','$b','$c','$d')");
-    mysqli_close(mysql:$connect_db);
+    
+    
 
 }
 
-//         <?php
-// $username = $_POST['username'];
-// $email = $_POST['email'];
-// $password = $_POST['password'];
-// $repassword = $_POST['repassword'];
-
-// $connect_db = mysqli_connect("localhost", "root", "", "amirhb");
-// mysqli_query($connect_db, "INSERT INTO users`(`username, email, `password`) VALUES ('$username','$email','$password')");
-// mysqli_close($connect_db);
-
-// if($password != $repassword){
-//     echo("<h1>رمز عبور نادرست می باشد!</h1>");
-// }
-// else{
-//     echo("<h1>ثبت نام موفقیت آمیز</h1>");
-//     echo("<p>نام کاربری: " . $username . "</p>");
-//     echo("<p>ایمیل : " . $email . "</p>");
-//     echo("<p>کلمه عبور: " . $password . "</p>");
-//     echo("<p>تکرار کلمه عبور: " . $repassword . "</p>");
-// }
-// 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="register_2.css">
+</head>
+<body>
+
+<?php
+$check_1 = mysqli_query(mysql:$connect_db,query:"INSERT INTO `user`(`username`, `gmail`, `phone_number`, `password`) VALUES ('$a','$b','$c','$d')");
+mysqli_close(mysql:$connect_db);
+if($check_1 == true){
+    ?>
+    <div class="info">
+        <div class="info__title">compleate seccesful</div>
+    </div>
+    <script>
+    
+        setTimeout(function(){
+                location.replace("index.html");
+            }, 5000); 
+    </script>
+<?php    
+}
+else {
+    ?>
+    <div class="info_1">
+        <div class="info__title">Error | try again!</div>
+    </div>
+    <script>
+    
+        setTimeout(function(){
+                location.replace("register.html");
+            }, 5000); 
+    </script>
+    <?php
+}
+
+?>
+
+
+
+</body>
+</html>
