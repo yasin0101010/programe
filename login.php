@@ -1,13 +1,8 @@
 <?php
-if(isset($_POST["email"]) && isset($_POST["phone_number"] ) && isset($_POST["password"]  )){
+if(isset($_POST["username"]) && isset($_POST["password"]  )){
     $a = $_POST["username"];
-    $b = $_POST["email"];
-    $c = $_POST["phone_number"];
     $d = $_POST["password"];
     $connect_db = mysqli_connect(hostname:"localhost", username:"root", password:"", database:"account");
-    
-    
-
 }
 
 ?>
@@ -22,9 +17,11 @@ if(isset($_POST["email"]) && isset($_POST["phone_number"] ) && isset($_POST["pas
 <body>
 
 <?php
-$check_1 = mysqli_query(mysql:$connect_db,query:"INSERT INTO `user`(`username`, `gmail`, `phone_number`, `password`) VALUES ('$a','$b','$c','$d')");
+$check_1 = mysqli_query(mysql:$connect_db,query:"SELECT * FROM `user` WHERE `username` = '$a' and `password`='$d'");
+
 mysqli_close(mysql:$connect_db);
-if($check_1 == true){
+$check_2 = mysqli_fetch_array($check_1);
+if($check_2){
     ?>
     <div class="info">
         <div class="info__title">compleate seccesful</div>
@@ -45,7 +42,7 @@ else {
     <script>
     
         setTimeout(function(){
-                location.replace("register.html");
+                location.replace("login.html");
             }, 3000); 
     </script>
     <?php
