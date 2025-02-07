@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FILM 2</title>
+    <title>FILM 1</title>
     <link rel="stylesheet" href="moves styles.css">
 
 </head>
@@ -75,7 +75,7 @@
             <div id="movie">
                 <!-- ویدیو -->
                 <video controls>
-                    <source src="film 2.mp4" type="video/mp4">
+                    <source src="film 1.mp4" type="video/mp4">
                 </video>
                 
             </div>
@@ -83,12 +83,23 @@
                 <!-- اسم یا عنوان ویدیو -->
                 
                 <p>
-                    &nbsp;&nbsp;&nbsp;&nbsp; Help people
+                    &nbsp;&nbsp;&nbsp;&nbsp; Humen VS Nuture
                 </p>
             </div>
         </div>
         <div class="playlist-container">
             <h1>Playlist</h1>
+    
+            <div class="video-item">
+                <a href="index.html">
+                    <img src="film 1.png" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Humen VS Nuture</h2>
+                        <p>Duration: 3:35</p>
+                        
+                    </div>
+                </a>
+            </div>
     
             <div class="video-item">
                 <a href="film2.html">
@@ -102,7 +113,7 @@
             </div>
     
             <div class="video-item">
-                <a href="film3.html">
+                <a href="fime3.html">
                     <img src="film 3.jpg" alt="Video Thumbnail">
                     <div class="video-info">
                         <h2>Futur of Humen</h2>
@@ -118,17 +129,6 @@
                     <div class="video-info">
                         <h2>Family</h2>
                         <p>Duration: 7:15</p>
-                        
-                    </div>
-                </a>
-            </div>
-    
-            <div class="video-item">
-                <a href="index.html">
-                    <img src="film 1.png" alt="Video Thumbnail">
-                    <div class="video-info">
-                        <h2>Humen VS Nuture</h2>
-                        <p>Duration: 3:35</p>
                         
                     </div>
                 </a>
@@ -181,7 +181,7 @@
                 const videoUrl = 'film 1.mp4'; // مسیر ویدیو
                 const a = document.createElement('a');
                 a.href = videoUrl;
-                a.download = "film 2.mp4";
+                a.download = "film 1.mp4";
                 a.click();
             }
             
