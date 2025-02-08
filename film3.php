@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FILM 4</title>
+    <title>FILM 3</title>
     <link rel="stylesheet" href="moves styles.css">
 
 </head>
@@ -11,14 +11,48 @@
     <div id="header" , class="flex-container">
         <!-- قسمت بالایی سایت -->
         <div id="header_menu">
-            <!-- menu bar -->
-            <a href="#" class="menu-button">
-                ☰
-            </a>
-            
+            <button class="menu-button" onclick="toggleOffcanvas()">☰</button>
         </div>
+        <!-- Offcanvas با محتوای RTL انگلیسی -->
+        <div class="offcanvas" id="myOffcanvas">
+            <div class="offcanvas-header">
+                <h3>Menu</h3>
+                <span class="close-btn" onclick="toggleOffcanvas()">&times;</span>
+            </div>
+            <div class="offcanvas-body">
+                <ul>
+                    <li><a href="index.html" style="color: black;">phoonix moves</a></li>
+                    <?php
+                    if (isset($_SESSION['login_check'])){?>
+                    <li><a href="logout.php" style="color: red;">logout</a></li>
+                    <?php
+                    }
+                    else{?>
+                    <li><a href="register.html" style="color: blue;">login/register</a></li>
+                    <?php
+                    }
+                    ?>
+                    
+                </ul>
+            </div>
+        </div>
+    
+        <div class="overlay" id="overlay" onclick="toggleOffcanvas()"></div>
+    
+        <script>
+            function toggleOffcanvas() {
+                const offcanvas = document.getElementById('myOffcanvas');
+                const overlay = document.getElementById('overlay');
+                
+                offcanvas.classList.toggle('active');
+                overlay.classList.toggle('active');
+                
+                document.body.style.overflow = offcanvas.classList.contains('active') ? 'hidden' : 'auto';
+            }
+        </script>
+        
         <div class="logo-container">
-            <a href="index.html" class="logo-link">
+            <a href="index.php" class="logo-link">
                 <img src="logo site.png" alt="Logo" class="logo">
             </a>
         </div>            
@@ -75,7 +109,7 @@
             <div id="movie">
                 <!-- ویدیو -->
                 <video controls>
-                    <source src="film 4.mp4" type="video/mp4">
+                    <source src="film 3.mp4" type="video/mp4">
                 </video>
                 
             </div>
@@ -83,7 +117,7 @@
                 <!-- اسم یا عنوان ویدیو -->
                 
                 <p>
-                    &nbsp;&nbsp;&nbsp;&nbsp; Family
+                    &nbsp;&nbsp;&nbsp;&nbsp; Futur of Humen
                 </p>
             </div>
         </div>
@@ -91,7 +125,18 @@
             <h1>Playlist</h1>
     
             <div class="video-item">
-                <a href="film4.html">
+                <a href="film3.php">
+                    <img src="film 3.jpg" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Futur of Humen</h2>
+                        <p>Duration: 6:24</p>
+                        
+                    </div>
+                </a>
+            </div>
+    
+            <div class="video-item">
+                <a href="film4.php">
                     <img src="film 4.png" alt="Video Thumbnail">
                     <div class="video-info">
                         <h2>Family</h2>
@@ -102,7 +147,7 @@
             </div>
     
             <div class="video-item">
-                <a href="index.html">
+                <a href="film1.php">
                     <img src="film 1.png" alt="Video Thumbnail">
                     <div class="video-info">
                         <h2>Humen VS Nuture</h2>
@@ -113,22 +158,11 @@
             </div>
     
             <div class="video-item">
-                <a href="film2.html">
+                <a href="film2.php">
                     <img src="film 2.png" alt="Video Thumbnail">
                     <div class="video-info">
                         <h2>Help people</h2>
                         <p>Duration: 1:25</p>
-                        
-                    </div>
-                </a>
-            </div>
-    
-            <div class="video-item">
-                <a href="film3.html">
-                    <img src="film 3.jpg" alt="Video Thumbnail">
-                    <div class="video-info">
-                        <h2>Futur of Humen</h2>
-                        <p>Duration: 6:24</p>
                         
                     </div>
                 </a>
@@ -178,10 +212,10 @@
                 setTimeout(() => burst.remove(), 500);
             
                 // عملکرد دانلود ویدیو
-                const videoUrl = 'film 4.mp4'; // مسیر ویدیو
+                const videoUrl = 'film 1.mp4'; // مسیر ویدیو
                 const a = document.createElement('a');
                 a.href = videoUrl;
-                a.download = "film 4.mp4";
+                a.download = "film 3.mp4";
                 a.click();
             }
             

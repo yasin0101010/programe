@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST["username"]) && isset($_POST["password"]  )){
     $a = $_POST["username"];
     $d = $_POST["password"];
@@ -22,6 +23,7 @@ $check_1 = mysqli_query(mysql:$connect_db,query:"SELECT * FROM `user` WHERE `use
 mysqli_close(mysql:$connect_db);
 $check_2 = mysqli_fetch_array($check_1);
 if($check_2){
+    $_SESSION['login_check'] = true;
     ?>
     <div class="info">
         <div class="info__title">compleate seccesful</div>
@@ -29,7 +31,7 @@ if($check_2){
     <script>
     
         setTimeout(function(){
-                location.replace("index.html");
+                location.replace("index.php");
             }, 3000); 
     </script>
 <?php    

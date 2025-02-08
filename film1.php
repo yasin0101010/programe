@@ -3,22 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FILM 2</title>
+    <title>FILM 1</title>
+    
+    <!-- <link rel="stylesheet" href="bootstrap.css"> -->
     <link rel="stylesheet" href="moves styles.css">
-
 </head>
 <body>
-    <div id="header" , class="flex-container">
+    <div id="header"  class="flex-container">
         <!-- قسمت بالایی سایت -->
+        
         <div id="header_menu">
-            <!-- menu bar -->
-            <a href="#" class="menu-button">
-                ☰
-            </a>
-            
+            <button class="menu-button" onclick="toggleOffcanvas()">☰</button>
         </div>
+        <!-- Offcanvas با محتوای RTL انگلیسی -->
+        <div class="offcanvas" id="myOffcanvas">
+            <div class="offcanvas-header">
+                <h3>Menu</h3>
+                <span class="close-btn" onclick="toggleOffcanvas()">&times;</span>
+            </div>
+            <div class="offcanvas-body">
+                <ul>
+                    <li><a href="index.html" style="color: black;">phoonix moves</a></li>
+                    <?php
+                    if (isset($_SESSION['login_check'])){?>
+                    <li><a href="logout.php" style="color: red;">logout</a></li>
+                    <?php
+                    }
+                    else{?>
+                    <li><a href="register.html" style="color: blue;">login/register</a></li>
+                    <?php
+                    }
+                    ?>
+                    
+                </ul>
+            </div>
+        </div>
+    
+        <div class="overlay" id="overlay" onclick="toggleOffcanvas()"></div>
+    
+        <script>
+            function toggleOffcanvas() {
+                const offcanvas = document.getElementById('myOffcanvas');
+                const overlay = document.getElementById('overlay');
+                
+                offcanvas.classList.toggle('active');
+                overlay.classList.toggle('active');
+                
+                document.body.style.overflow = offcanvas.classList.contains('active') ? 'hidden' : 'auto';
+            }
+        </script>
+        
         <div class="logo-container">
-            <a href="index.html" class="logo-link">
+            <a href="index.php" class="logo-link">
                 <img src="logo site.png" alt="Logo" class="logo">
             </a>
         </div>            
@@ -35,36 +71,6 @@
                 <img id="profile-image" src="default-user.jpg" alt="Profile Image">
             </a>
         </div>
-        <script>
-            window.onload = function() {
-                // فرض کنید چک می‌کنیم که آیا کاربر وارد شده است یا خیر
-                const userLoggedIn = false; // اگر کاربر وارد شده است، این را به true تغییر دهید
-                const hasProfileImage = false; // اگر کاربر پروفایل دارد، این را به true تغییر دهید
-                
-                const profileImage = document.getElementById("profile-image");
-                const profileLink = document.getElementById("profile-link");
-
-                if (!userLoggedIn) {
-                    // اگر کاربر وارد نشده باشد، به صفحه ثبت‌نام هدایت شود
-                    profileImage.src = "default-user.jpg"; // عکس دیفالت
-                    profileLink.href = "register.html"; // لینک به صفحه ثبت‌نام
-                } else {
-                    // اگر کاربر وارد شده باشد، چک می‌کنیم که آیا پروفایل دارد یا نه
-                    if (hasProfileImage) {
-                        // اگر کاربر پروفایل دارد، عکس پروفایل را نشان می‌دهیم
-                        profileImage.src = "user.jpg"; // این باید مسیر عکس پروفایل کاربر باشد
-                        profileLink.href = "user-profile.html"; // لینک به صفحه کاربر
-                    } else {
-                        // اگر پروفایل نداشته باشد، عکس دیفالت را نمایش می‌دهیم
-                        profileImage.src = "default-user.jpg"; 
-                        profileLink.href = "register.html"; // لینک به صفحه ثبت‌نام
-                    }
-                }
-            }
-
-
-
-        </script>
     </div>
     <div id="movie_space">
         <!-- قسمت ویدیو و پلی لیست -->
@@ -75,23 +81,34 @@
             <div id="movie">
                 <!-- ویدیو -->
                 <video controls>
-                    <source src="film 2.mp4" type="video/mp4">
+                    <source src="film 1.mp4" type="video/mp4">
                 </video>
                 
             </div>
             <div id="text">
                 <!-- اسم یا عنوان ویدیو -->
                 
-                <p>
-                    &nbsp;&nbsp;&nbsp;&nbsp; Help people
-                </p>
+                <h5>
+                    &nbsp;&nbsp;&nbsp;&nbsp; Humen VS Nuture
+                </h5>
             </div>
         </div>
         <div class="playlist-container">
             <h1>Playlist</h1>
     
             <div class="video-item">
-                <a href="film2.html">
+                <a href="film1.php">
+                    <img src="film 1.png" alt="Video Thumbnail">
+                    <div class="video-info">
+                        <h2>Humen VS Nuture</h2>
+                        <p>Duration: 3:35</p>
+                        
+                    </div>
+                </a>
+            </div>
+    
+            <div class="video-item">
+                <a href="film2.php">
                     <img src="film 2.png" alt="Video Thumbnail">
                     <div class="video-info">
                         <h2>Help people</h2>
@@ -102,7 +119,7 @@
             </div>
     
             <div class="video-item">
-                <a href="film3.html">
+                <a href="fime3.php">
                     <img src="film 3.jpg" alt="Video Thumbnail">
                     <div class="video-info">
                         <h2>Futur of Humen</h2>
@@ -113,22 +130,11 @@
             </div>
     
             <div class="video-item">
-                <a href="film4.html">
+                <a href="film4.php">
                     <img src="film 4.png" alt="Video Thumbnail">
                     <div class="video-info">
                         <h2>Family</h2>
                         <p>Duration: 7:15</p>
-                        
-                    </div>
-                </a>
-            </div>
-    
-            <div class="video-item">
-                <a href="index.html">
-                    <img src="film 1.png" alt="Video Thumbnail">
-                    <div class="video-info">
-                        <h2>Humen VS Nuture</h2>
-                        <p>Duration: 3:35</p>
                         
                     </div>
                 </a>
@@ -181,7 +187,7 @@
                 const videoUrl = 'film 1.mp4'; // مسیر ویدیو
                 const a = document.createElement('a');
                 a.href = videoUrl;
-                a.download = "film 2.mp4";
+                a.download = "film 1.mp4";
                 a.click();
             }
             
@@ -281,5 +287,6 @@
         <!-- کپی رایت  -->
         <p>© 2024 تمامی حقوق محفوظ است.</p>
     </div>
+    <script src="bootstrap.bundle.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST["email"]) && isset($_POST["phone_number"] ) && isset($_POST["password"]  )){
     $a = $_POST["username"];
     $b = $_POST["email"];
@@ -25,6 +26,7 @@ if(isset($_POST["email"]) && isset($_POST["phone_number"] ) && isset($_POST["pas
 $check_1 = mysqli_query(mysql:$connect_db,query:"INSERT INTO `user`(`username`, `gmail`, `phone_number`, `password`) VALUES ('$a','$b','$c','$d')");
 mysqli_close(mysql:$connect_db);
 if($check_1 == true){
+    $_SESSION['login_check'] = true;
     ?>
     <div class="info">
         <div class="info__title">compleate seccesful</div>
@@ -32,7 +34,7 @@ if($check_1 == true){
     <script>
     
         setTimeout(function(){
-                location.replace("index.html");
+                location.replace("index.php");
             }, 3000); 
     </script>
 <?php    
