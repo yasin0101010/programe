@@ -10,6 +10,18 @@ unset($_SESSION['login_check'])
     <title>logut</title>
 </head>
 <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    font-size: large;
+    padding: 0;
+    background-color: #121212; /* سیاه */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+} 
     .info__title {
 
     font-weight: 1000;
@@ -37,7 +49,7 @@ unset($_SESSION['login_check'])
     <script>
     
         setTimeout(function(){
-                location.replace("register.html");
+                location.replace("index.php");
             }, 3000); 
     </script>
 </body>
