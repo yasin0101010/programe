@@ -1,63 +1,69 @@
-<div id="header"  class="flex-container">
-    <!-- قسمت بالایی سایت -->
-    
-    <div id="header_menu">
-        <button class="menu-button" onclick="toggleOffcanvas()">☰</button>
-    </div>
-    <!-- Offcanvas با محتوای RTL انگلیسی -->
-    <div class="offcanvas" id="myOffcanvas">
-        <div class="offcanvas-header">
-            <h3>Menu</h3>
-            <span class="close-btn" onclick="toggleOffcanvas()">&times;</span>
-        </div>
-        <div class="offcanvas-body">
-            <ul>
-                <li><a href="index.php" style="color: black;">phoonix moves</a></li>
-                <?php
-                if (isset($_SESSION['login_check'])){?>
-                <li><a href="logout.php" style="color: red;">logout</a></li>
-                <?php
-                }
-                else{?>
-                <li><a href="register.html" style="color: blue;">login/register</a></li>
-                <?php
-                }
-                ?>
+<div class="row  d-flex justify-content-center align-items-center fixed-top border-bottom border-black" style="background-color: rgba(255, 255, 255, 0.479);">
+    <div class ="col-auto p-auto d-flex justify-content-center align-items-center ml-1">
+        <button class="btn menu_bar  " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <svg class="aparat-icon icon icon-burgerMenu" viewBox="0 0 24 25" width="1em" height="1em" focusable="false" style="width: 1em; height: 1em;"><path d="M21 12.5C21 12.6989 20.921 12.8897 20.7803 13.0303C20.6397 13.171 20.4489 13.25 20.25 13.25H3.75C3.55109 13.25 3.36032 13.171 3.21967 13.0303C3.07902 12.8897 3 12.6989 3 12.5C3 12.3011 3.07902 12.1103 3.21967 11.9697C3.36032 11.829 3.55109 11.75 3.75 11.75H20.25C20.4489 11.75 20.6397 11.829 20.7803 11.9697C20.921 12.1103 21 12.3011 21 12.5ZM3.75 7.25H20.25C20.4489 7.25 20.6397 7.17098 20.7803 7.03033C20.921 6.88968 21 6.69891 21 6.5C21 6.30109 20.921 6.11032 20.7803 5.96967C20.6397 5.82902 20.4489 5.75 20.25 5.75H3.75C3.55109 5.75 3.36032 5.82902 3.21967 5.96967C3.07902 6.11032 3 6.30109 3 6.5C3 6.69891 3.07902 6.88968 3.21967 7.03033C3.36032 7.17098 3.55109 7.25 3.75 7.25ZM20.25 17.75H3.75C3.55109 17.75 3.36032 17.829 3.21967 17.9697C3.07902 18.1103 3 18.3011 3 18.5C3 18.6989 3.07902 18.8897 3.21967 19.0303C3.36032 19.171 3.55109 19.25 3.75 19.25H20.25C20.4489 19.25 20.6397 19.171 20.7803 19.0303C20.921 18.8897 21 18.6989 21 18.5C21 18.3011 20.921 18.1103 20.7803 17.9697C20.6397 17.829 20.4489 17.75 20.25 17.75Z"></path></svg>
+        </button>
+        
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                    <svg class="aparat-icon icon icon-burgerMenu" viewBox="0 0 24 25" width="1em" height="1em" focusable="false" style="width: 1em; height: 1em;"><path d="M21 12.5C21 12.6989 20.921 12.8897 20.7803 13.0303C20.6397 13.171 20.4489 13.25 20.25 13.25H3.75C3.55109 13.25 3.36032 13.171 3.21967 13.0303C3.07902 12.8897 3 12.6989 3 12.5C3 12.3011 3.07902 12.1103 3.21967 11.9697C3.36032 11.829 3.55109 11.75 3.75 11.75H20.25C20.4489 11.75 20.6397 11.829 20.7803 11.9697C20.921 12.1103 21 12.3011 21 12.5ZM3.75 7.25H20.25C20.4489 7.25 20.6397 7.17098 20.7803 7.03033C20.921 6.88968 21 6.69891 21 6.5C21 6.30109 20.921 6.11032 20.7803 5.96967C20.6397 5.82902 20.4489 5.75 20.25 5.75H3.75C3.55109 5.75 3.36032 5.82902 3.21967 5.96967C3.07902 6.11032 3 6.30109 3 6.5C3 6.69891 3.07902 6.88968 3.21967 7.03033C3.36032 7.17098 3.55109 7.25 3.75 7.25ZM20.25 17.75H3.75C3.55109 17.75 3.36032 17.829 3.21967 17.9697C3.07902 18.1103 3 18.3011 3 18.5C3 18.6989 3.07902 18.8897 3.21967 19.0303C3.36032 19.171 3.55109 19.25 3.75 19.25H20.25C20.4489 19.25 20.6397 19.171 20.7803 19.0303C20.921 18.8897 21 18.6989 21 18.5C21 18.3011 20.921 18.1103 20.7803 17.9697C20.6397 17.829 20.4489 17.75 20.25 17.75Z"></path></svg>
+                    منو
+                </h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
                 
+                    <ul>
+                        <li>
+                            <a href="index.php" style="color: black;"> 
+                                <svg class="aparat-icon icon icon-home icon-start" viewBox="0 0 24 25" width="30px" height="30px" focusable="false" style="width: 25px; height: 25px;"><path d="M20.5153 10.6026L13.0153 3.52633C13.0116 3.52313 13.0082 3.51968 13.005 3.51601C12.7289 3.26489 12.369 3.12573 11.9958 3.12573C11.6225 3.12573 11.2627 3.26489 10.9866 3.51601L10.9763 3.52633L3.48469 10.6026C3.33187 10.7431 3.20989 10.9138 3.12646 11.1039C3.04303 11.294 2.99997 11.4994 3 11.707V20.3741C3 20.772 3.15804 21.1535 3.43934 21.4348C3.72064 21.7161 4.10218 21.8741 4.5 21.8741H9C9.39782 21.8741 9.77936 21.7161 10.0607 21.4348C10.342 21.1535 10.5 20.772 10.5 20.3741V15.8741H13.5V20.3741C13.5 20.772 13.658 21.1535 13.9393 21.4348C14.2206 21.7161 14.6022 21.8741 15 21.8741H19.5C19.8978 21.8741 20.2794 21.7161 20.5607 21.4348C20.842 21.1535 21 20.772 21 20.3741V11.707C21 11.4994 20.957 11.294 20.8735 11.1039C20.7901 10.9138 20.6681 10.7431 20.5153 10.6026ZM19.5 20.3741H15V15.8741C15 15.4763 14.842 15.0948 14.5607 14.8135C14.2794 14.5322 13.8978 14.3741 13.5 14.3741H10.5C10.1022 14.3741 9.72064 14.5322 9.43934 14.8135C9.15804 15.0948 9 15.4763 9 15.8741V20.3741H4.5V11.707L4.51031 11.6976L12 4.62414L19.4906 11.6957L19.5009 11.7051L19.5 20.3741Z"></path></svg>
+                                خانه 
+                            </a>
+                        </li>
+                    </ul>
+                
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-auto p-auto d-flex justify-content-center align-items-center"">
+        <a href="index.php " class="m-auto">
+            <img src="image/logo site.png" alt="" class="image_bar ">
+        </a>
+    </div>
+    <div class=" col-auto  mx-auto p-2 d-md-block d-none">
+        <div class="search_bar_container d-md-block d-none">
+            <form action="#" method="GET">
+                <input type="text" 
+                        class="search_bar_input" 
+                        placeholder="جستجو کنید..."
+                        aria-label="Search">
+                <button type="submit" class="search_bar_button">search</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-auto p-auto d-flex justify-content-center align-items-center">
+        <div class="dropdown">
+            <a class="btn btn-link" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
+                <img src="image/default-user.jpg" alt="Profile" class="rounded-circle" style="width: 50px; height: auto; ">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+            <?php
+            if (isset($_SESSION['login_check'])){?>
+                <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+            <?php
+            }
+            else{?>
+                <li><a class="dropdown-item text-primary" href="register.html">Login/Register</a></li>
+            <?php
+            }
+            ?>
             </ul>
         </div>
     </div>
-
-    <div class="overlay" id="overlay" onclick="toggleOffcanvas()"></div>
-
-    <script>
-        function toggleOffcanvas() {
-            const offcanvas = document.getElementById('myOffcanvas');
-            const overlay = document.getElementById('overlay');
-            
-            offcanvas.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            document.body.style.overflow = offcanvas.classList.contains('active') ? 'hidden' : 'auto';
-        }
-    </script>
-    
-    <div class="logo-container">
-        <a href="index.php" class="logo-link">
-            <img src="logo site.png" alt="Logo" class="logo">
-        </a>
-    </div>            
-    <div id="header_space_1"> 5</div>
-    <div id="header_search">
-        <form action="/search" method="get">
-            <input type="text" name="q" placeholder="Search here..." required>
-            <button type="submit">Search</button>
-        </form>
-    </div>
-    <div id="header_space_2"> </div>
-    <div class="profile-container">
-        <a id="profile-link" href="#">
-            <img id="profile-image" src="default-user.jpg" alt="Profile Image">
-        </a>
-    </div>
+</div>
+<div class="d-flex pb-5">
+    <h1 style="color: rgba(255, 0, 0, 0);">footer</h1>
 </div>
