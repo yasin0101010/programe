@@ -3,8 +3,8 @@ body {
     margin: 0;
     font-size: large;
     padding: 0;
-    background-color: #121212; /* سیاه */
-    color: white;
+    background-color: #ffffff; /* سیاه */
+    color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;

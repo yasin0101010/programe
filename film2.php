@@ -1,5 +1,9 @@
 <?php
 session_start();
+$key = mysqli_connect   ('localhost','root','','moves');
+$show = mysqli_query($key,"SELECT * FROM `move` WHERE 1");
+mysqli_close($key);
+$row = mysqli_fetch_array($show);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,45 +128,25 @@ session_start();
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body ">
                                     <div class="video_item_bar">
-                                    <div class="col-12 video_item p-4 m-2">
-                                            <a href="film2.php">
-                                                <img src="image/film 2.png" alt="Video Thumbnail">
+                                    <?php
+                                        $i = 0;
+                                            while($row){
+                                                $i += 1;
+                                        ?>
+                                        <div class="col-12 video_item p-4 m-2">
+                                            <a href="film<?php print($i)?>.php" class="d-black h-100">
+                                                <img src="<?php print ($row['pic_move'])?>" alt="Video Thumbnail">
                                                 <div class="video_info">
-                                                    <h2>Help people</h2>
-                                                    <p>Duration: 1:25</p>
+                                                    <h2><?php print ($row['name_move'])?></h2>
+                                                    <p>Duration: <?php print ($row['time_move'])?></p>
                                                     
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-12 video_item p-4 m-2">
-                                            <a href="film3.php">
-                                                <img src="image/film 3.jpg" alt="Video Thumbnail">
-                                                <div class="video_info">
-                                                    <h2>Futur of Humen</h2>
-                                                    <p>Duration: 6:24</p>
-                                                    
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-12 video_item p-4 m-2">
-                                            <a href="film4.php">
-                                                <img src="image/film 4.png" alt="Video Thumbnail">
-                                                <div class="video_info">
-                                                    <h2>Family</h2>
-                                                    <p>Duration: 7:15</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-12 video_item p-4 m-2">
-                                            <a href="film1.php" class="d-black h-100">
-                                                <img src="image/film 1.png" alt="Video Thumbnail">
-                                                <div class="video_info">
-                                                    <h2>Humen VS Nuture</h2>
-                                                    <p>Duration: 3:35</p>
-                                                    
-                                                </div>
-                                            </a>
-                                        </div>
+                                        <?php
+                                            $row = mysqli_fetch_array($show);
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 <?php
 session_start();
-unset($_SESSION['login_check'])
+unset($_SESSION['login_check']);
+unset($_SESSION['admin']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,7 @@ unset($_SESSION['login_check'])
     margin: 0;
     font-size: large;
     padding: 0;
-    background-color: #121212; /* سیاه */
+    background-color:rgb(255, 255, 255); /* سیاه */
     color: white;
     display: flex;
     justify-content: center;

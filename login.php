@@ -15,15 +15,17 @@ if(isset($_POST["username"]) && isset($_POST["password"]  )){
     <title>Document</title>
     <link rel="stylesheet" href="register_2.css">
 </head>
-<body>
+<body style="background-color: white;">
 
 <?php
 $check_1 = mysqli_query(mysql:$connect_db,query:"SELECT * FROM `user` WHERE `username` = '$a' and `password`='$d'");
-
 mysqli_close(mysql:$connect_db);
 $check_2 = mysqli_fetch_array($check_1);
 if($check_2){
     $_SESSION['login_check'] = true;
+    if($a == "admin" && $d == "admin123456"){
+        $_SESSION['admin'] = true;
+    }
     ?>
     <div class="info">
         <div class="info__title">compleate seccesful</div>

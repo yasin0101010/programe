@@ -137,7 +137,7 @@ session_start();
                 <a href="film1.php" style="color: black;text-decoration: none;">
                     <div class="video-card">
                         <div class="video-thumbnail">
-                            <img src="film 1.png" class="img-fluid" alt="ویدیو">
+                            <img src="image/film 1.png" class="img-fluid" alt="ویدیو">
                             <div class="play-btn"></div>
                         </div>
                         <div class="card-body">
@@ -152,7 +152,7 @@ session_start();
                 <a href="film2.php" style="color: black;text-decoration: none;">
                     <div class="video-card">
                         <div class="video-thumbnail">
-                            <img src="film 2.png" class="img-fluid" alt="ویدیو">
+                            <img src="image/film 2.png" class="img-fluid" alt="ویدیو">
                             <div class="play-btn"></div>
                         </div>
                         <div class="card-body">
@@ -167,7 +167,7 @@ session_start();
                 <a href="film4.php" style="color: black;text-decoration: none;">
                     <div class="video-card">
                         <div class="video-thumbnail">
-                            <img src="film 4.png" class="img-fluid" alt="ویدیو">
+                            <img src="image/film 4.png" class="img-fluid" alt="ویدیو">
                             <div class="play-btn"></div>
                         </div>
                         <div class="card-body">
