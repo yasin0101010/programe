@@ -23,7 +23,7 @@ mysqli_close(mysql:$connect_db);
 $check_2 = mysqli_fetch_array($check_1);
 if($check_2){
     $_SESSION['login_check'] = true;
-    if($a == "admin" && $d == "admin123456"){
+    if($check_2['amdin']==1){
         $_SESSION['admin'] = true;
     }
     ?>

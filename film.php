@@ -2,15 +2,19 @@
 session_start();
 $key = mysqli_connect   ('localhost','root','','moves');
 $show = mysqli_query($key,"SELECT * FROM `move` WHERE 1");
-mysqli_close($key);
 $row = mysqli_fetch_array($show);
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];}
+$show_move = mysqli_query($key,"SELECT * FROM `move` where  `id` = '$id'");
+$row_move = mysqli_fetch_array($show_move);
+mysqli_close($key);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?php print ($row_move['name_move'])?></title>
     <link rel="stylesheet" href="bootstrap.rtl.css">
     <link rel="stylesheet" href="style_moves.css">
 </head>
@@ -22,10 +26,10 @@ $row = mysqli_fetch_array($show);
             <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 " style="padding-right: 2% ;">
                 <div class="row">
                     <div class="col-12">
-                        <video src="video/film 4.mp4" class="video_user" controls></video>
+                        <video src="<?php print ($row['video_move'])?>" class="video_user" controls></video>
                     </div>
                     <div class="col " style="background-color: whitesmoke; border-radius: 10px;">
-                        <h1 class="video-title">خانواده</h1>
+                        <h1 class="video-title"><?php print ($row_move['name_move'])?></h1>
                     </div>
                     <div class="col-auto" style="background-color: whitesmoke; border-radius: 10px;">
                         <div class="d-block">
@@ -74,7 +78,7 @@ $row = mysqli_fetch_array($show);
 
                             // شبیه سازی دانلود
                             const link = document.createElement('a');
-                            link.href = 'video/film 1.mp4';
+                            link.href = '<?php print ($row['video_move'])?>';
                             link.download = 'video.mp4';
                             document.body.appendChild(link);
                             link.click();
@@ -127,13 +131,13 @@ $row = mysqli_fetch_array($show);
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body ">
                                     <div class="video_item_bar">
-                                    <?php
-                                        $i = 0;
+                                        <?php
+                                        
                                             while($row){
-                                                $i += 1;
+                                                
                                         ?>
                                         <div class="col-12 video_item p-4 m-2">
-                                            <a href="film<?php print($i)?>.php" class="d-black h-100">
+                                            <a href="film<?php print($row['id'])?>.php" class="d-black h-100">
                                                 <img src="<?php print ($row['pic_move'])?>" alt="Video Thumbnail">
                                                 <div class="video_info">
                                                     <h2><?php print ($row['name_move'])?></h2>
@@ -146,7 +150,6 @@ $row = mysqli_fetch_array($show);
                                             $row = mysqli_fetch_array($show);
                                         }
                                         ?>
-                                        
                                     </div>
                                 </div>
                             </div>

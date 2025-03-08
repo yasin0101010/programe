@@ -2,14 +2,14 @@
 $key = mysqli_connect   ('localhost','root','','moves');
 $show = mysqli_query($key,"SELECT * FROM `move` WHERE 1");
 mysqli_close($key);
-$row = mysqli_fetch_array($show);
+$row = mysqli_fetch_array($show); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>admin</title>
     <link rel="stylesheet" href="bootstrap.rtl.css">
     <link rel="stylesheet" href="style_moves.css">
 </head>

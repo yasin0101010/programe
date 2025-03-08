@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit files</title>
     <link rel="stylesheet" href="bootstrap.rtl.css">
     <link rel="stylesheet" href="style_moves.css">
-    <title>Document</title>
-    <style>
+
+</head>
+<style>
         .form-container {
             width: 320px;
             border-radius: 0.75rem;
@@ -61,77 +63,91 @@
             margin-top: 1rem;
         }
     </style>
-</head>
 <body dir="rtl" style="background-color: #ffffff;">
-    <!-- header -->
     <?php
     session_start();
     include ('footer.html');
+
+    // Fetch existing data
+    $connect_db = mysqli_connect('localhost', 'root', '', 'moves');
+    $id = $_GET['id'] ?? null;
+    $existing_image = '';
+    $existing_video = '';
+    $existing_name = '';
+    $existing_time = '';
+
+    if ($id) {
+        $result = mysqli_query($connect_db, "SELECT * FROM `move` WHERE `id`='$id'");
+        if ($row = mysqli_fetch_assoc($result)) {
+            $existing_image = $row['pic_move'];
+            $existing_video = $row['video_move'];
+            $existing_name = $row['name_move'];
+            $existing_time = $row['time_move'];
+        } else {
+            die("Record not found");
+        }
+    } else {
+        die("Invalid ID");
+    }
     ?>
-    <!-- main -->
+
     <div class="container">
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center">
             <div class="col-auto" style="margin-top:110px ; margin-bottom:110px;">
                 <div class="form-container">
-                    <p class="title">ویدیو</p> 
-                    <form class="form" action="admin_edit.php?id=<?php echo($_GET['id']);?>" method="post">
+                    <p class="title">ویرایش ویدیو</p> 
+                    <form class="form" action="admin_edit.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
                         <div class="input-group">
-                            <label for="image">عکس</label>
-                            <input type="file" name="image" id="image" accept="image/*" required>
+                            <label for="image">عکس (فعلی: <?php echo $existing_image ?: 'ندارد'; ?>)</label>
+                            <input type="file" name="image" id="image" accept="image/*">
                         </div>
                         <div class="input-group">
-                            <label for="titel">موضوع</label>
-                            <input type="text" name="name" id="name" required>
+                            <label for="video">ویدیو (فعلی: <?php echo $existing_video ?: 'ندارد'; ?>)</label>
+                            <input type="file" name="video" id="video" accept="video/*">
                         </div>
                         <div class="input-group">
-                            <label for="explain">زمان ویدیو</label>
-                            <input type="text" name="time" id="time" required>
+                            <label for="name">موضوع</label>
+                            <input type="text" name="name" id="name" value="<?php echo $existing_name; ?>" required>
                         </div>
-                        <button class="sign">ثبت</button>
+                        <div class="input-group">
+                            <label for="time">زمان ویدیو</label>
+                            <input type="text" name="time" id="time" value="<?php echo $existing_time; ?>" required>
+                        </div>
+                        <button class="sign">ثبت تغییرات</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- footer -->
+
     <?php
-    $id = $_GET['id'];
-    $key = mysqli_connect   ('localhost','root','','moves');
-    if (isset($_POST['name'])) {
+    if (isset($_POST["name"]) && isset($_POST["time"])) {
+        $name = $_POST["name"];
+        $time = $_POST["time"];
         
-        
-        $title = $_POST['name'];
-        $explain = $_POST['time'];
-        $imagePath = '';
-        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-            $targetDir = "uploads/";
-            if (!is_dir($targetDir)) {
-                mkdir($targetDir, 0777, true);
-            }
-            $imageName = uniqid() . basename($_FILES['image']['name']);
-            $targetFile = $targetDir . $imageName;
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-                $image = $targetFile;
-            } else {
-                echo "خطا در آپلود تصویر.";
-                exit;
-            }
+        // Handle image
+        $imageName = "image/".basename($_FILES['image']['name']);
+        $videoName = "video/".basename($_FILES['video']['name']);
+
+        $query = "UPDATE `move` SET 
+                    `pic_move`='$imageName',
+                    `video_move`='$videoName',
+                    `name_move`='$name',
+                    `time_move`='$time' 
+                WHERE `id`='$id'";
+
+        if (mysqli_query($connect_db, $query)) {
+            mysqli_close($connect_db);
+            echo "<script>
+                    window.location.href = 'admin.php';
+                    alert('ویدیو با موفقیت ویرایش شد.');
+                </script>";
         } else {
-            echo "تصویر انتخاب نشده است.";
-            
+            echo "Error: " . mysqli_error($connect_db);
         }
-        mysqli_query($key,"UPDATE `move` SET `pic_move`='$image',`name_move`='$title',`time_move`='$explain'  WHERE `id`='$id'");
-        mysqli_close($key);
-        ?>
-        <script>
-            
-            window.location.href = 'admin.php';
-            alert('ویدیو با موفقیت ویرایش شد.');
-        </script>
-        <?php
     }
-        
     ?>
+    
     <script src="bootstrap.bundle.js"></script>
 </body>
 </html>

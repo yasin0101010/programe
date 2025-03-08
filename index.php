@@ -1,5 +1,9 @@
 <?php
 session_start();
+$key = mysqli_connect   ('localhost','root','','moves');
+$show = mysqli_query($key,"SELECT * FROM `move` WHERE 1");
+mysqli_close($key);
+$row = mysqli_fetch_array($show);
 ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -132,55 +136,30 @@ session_start();
 <section class="py-5">
     <div class="container">
         <div class="row">
-            <!-- Video Card 1 -->
-            <div class="col-md-4" data-aos="zoom-in">
-                <a href="film1.php" style="color: black;text-decoration: none;">
-                    <div class="video-card">
-                        <div class="video-thumbnail">
-                            <img src="image/film 1.png" class="img-fluid" alt="ویدیو">
-                            <div class="play-btn"></div>
-                        </div>
-                        <div class="card-body">
-                            <h5>Humen VS Nuture</h5>
-                            <p class="text-muted">Duration: 3:35</p>
-                            
-                        </div>
+            <?php
+                while($row){ 
+                    ?>
+                    <div class="col-md-4" data-aos="zoom-in">
+                        <a href="film?id=<?php echo($row['id']);?>.php" style="color: black;text-decoration: none;">
+                            <div class="video-card">
+                                <div class="video-thumbnail">
+                                    <img src="<?php print($row['pic_move'])?>" class="img-fluid" alt="ویدیو">
+                                    <div class="play-btn"></div>
+                                </div>
+                                <div class="card-body">
+                                    <h5><?php print($row['name_move'])?></h5>
+                                    <p class="text-muted">Duration: <?php print($row['time_move'])?></p>
+                                    
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in">
-                <a href="film2.php" style="color: black;text-decoration: none;">
-                    <div class="video-card">
-                        <div class="video-thumbnail">
-                            <img src="image/film 2.png" class="img-fluid" alt="ویدیو">
-                            <div class="play-btn"></div>
-                        </div>
-                        <div class="card-body">
-                            <h5>Help people</h5>
-                            <p class="text-muted">Duration: 1:25</p>
-                            
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in">
-                <a href="film4.php" style="color: black;text-decoration: none;">
-                    <div class="video-card">
-                        <div class="video-thumbnail">
-                            <img src="image/film 4.png" class="img-fluid" alt="ویدیو">
-                            <div class="play-btn"></div>
-                        </div>
-                        <div class="card-body">
-                            <h5>Family</h5>
-                            <p class="text-muted">Duration: 7:15</p>
-                            
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <!-- Repeat similar blocks for other videos -->
-            
+                    <?php
+                    $row = mysqli_fetch_array($show);
+                }
+
+
+                ?>
         </div>
     </div>
 </section>
